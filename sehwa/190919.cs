@@ -15,8 +15,8 @@ namespace ConsoleApp1
             Console.WriteLine("두번째 숫자를 입력하세요 : ");
             int Value2 = int.Parse(Console.ReadLine());
 
-            double result;
-            int error = 0;
+            double result=0;
+            bool error = false;
             switch (Operate)
             {
                 case '+':
@@ -32,14 +32,17 @@ namespace ConsoleApp1
                     if (Value2 != 0)
                         result = (double)(Value1 / Value2);
                     else
-                    {
-                        Console.WriteLine("0으로 나눌 수 없습니다.");
-                        error = 1;
-                    }
+                        error = true;
+                    break;
+                default:
+                    error = true;
                     break;
             }
-            
-            
+
+            if(!error)
+                Console.WriteLine("{0} {1} {2} = {3}", Value1, Operate, Value2, result);
+            else
+                Console.WriteLine("에러입니다");
 
         }
     }
